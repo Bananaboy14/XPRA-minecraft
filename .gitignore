@@ -1,0 +1,9 @@
+# Ignore the Lunar Client AppImage and extracted AppImage contents
+lunarclient.AppImage
+squashfs-root/
+
+# OS and editor files
+.DS_Store
+*.swp
+*.swo
+/.vscode
