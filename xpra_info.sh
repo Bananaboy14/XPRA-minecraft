@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Simple XPRA connection info script
+# Shows how to connect to the running XPRA session
+
+echo "=== XPRA Lunar Client Setup ==="
+echo ""
+echo "🎮 Lunar Client is running on XPRA!"
+echo ""
+echo "📱 QUICK ACCESS:"
+echo "   Web Browser: http://localhost:14500"
+echo ""
+echo "🔧 CONTROLS:"
+echo "   • Launch Lunar Client: ./launch_lunar_xpra.sh"
+echo "   • Manual start: DISPLAY=:100 ./squashfs-root/lunarclient &"
+echo "   • Stop server: xpra stop :100"
+echo "   • Server info: xpra info :100"
+echo ""
+echo "🌐 EXTERNAL ACCESS:"
+echo "   If you need external access, use GitHub Codespace port forwarding"
+echo "   Go to the Ports tab and forward port 14500"
+echo ""
+echo "📊 Current Status:"
+echo "   XPRA Sessions:"
+xpra list 2>/dev/null || echo "     No active sessions"
+echo ""
+echo "   Network Status:"
+netstat -tlnp 2>/dev/null | grep 14500 || echo "     Port 14500 not active"
+echo ""
+echo "   Lunar Client Process:"
+ps aux | grep -v grep | grep -i lunar | head -3 || echo "     No Lunar Client process found"
+echo ""
+echo "=== Ready to Play! ==="
