@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# Launch Lunar Client via XPRA with proper display sizing
-# This script sets up XPRA server with fixed dimensions to prevent oversized display
+# Launch Lunar Client via XPRA optimized for Chromebook displays
+# This script uses smaller resolution perfect for Chromebook screens
 
-echo "🚀 Starting Lunar Client via XPRA with proper display sizing..."
+echo "🚀 Starting Lunar Client via XPRA (Chromebook Optimized)..."
 
 # Set display variables
-export DISPLAY=:100
+export DISPLAY=:102
 
-# Kill any existing XPRA sessions on display :100
+# Kill any existing XPRA sessions on display :102
 echo "🧹 Cleaning up any existing XPRA sessions..."
-xpra stop :100 2>/dev/null || true
+xpra stop :102 2>/dev/null || true
 
 # Wait a moment for cleanup
 sleep 2
@@ -21,16 +21,16 @@ if [ ! -d "squashfs-root" ]; then
     ./lunarclient.AppImage --appimage-extract
 fi
 
-# Start XPRA server with specific resolution and optimized settings
-echo "🖥️ Starting XPRA server with 1280x720 resolution..."
-xpra start :100 \
-    --bind-tcp=0.0.0.0:14500 \
+# Start XPRA server with Chromebook-optimized settings (smaller resolution)
+echo "💻 Starting XPRA server optimized for Chromebook (1024x576 resolution)..."
+xpra start :102 \
+    --bind-tcp=0.0.0.0:14502 \
     --html=on \
     --start-child="./squashfs-root/lunarclient" \
     --exit-with-children \
     --daemon=no \
-    --desktop-scaling=1 \
-    --resize-display=no \
+    --desktop-scaling=0.8 \
+    --resize-display=yes \
     --dpi=96 \
     --speaker=on \
     --microphone=on \
@@ -38,11 +38,11 @@ xpra start :100 \
     --clipboard=yes \
     --keyboard-sync=yes \
     --encoding=png,jpeg,rgb \
-    --compress=1 \
-    --quality=80 \
-    --min-quality=30 \
-    --speed=80 \
-    --min-speed=30 \
+    --compress=2 \
+    --quality=75 \
+    --min-quality=25 \
+    --speed=90 \
+    --min-speed=40 \
     --opengl=auto \
     --notifications=yes \
     --bell=yes \

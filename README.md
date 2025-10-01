@@ -1,5 +1,8 @@
 # XPRA Lunar Client Setup
 
+## You have to download this appimage and put it in the codespace
+https://drive.google.com/file/d/1TGWML5XN2rPYjmG_gQKIVBnVgmtj_eMF/view
+
 ## 🎮 Complete Setup for Running Lunar Client via XPRA
 
 This setup allows you to run Lunar Client on a GitHub Codespace using XPRA for remote desktop access.
@@ -17,11 +20,14 @@ This setup allows you to run Lunar Client on a GitHub Codespace using XPRA for r
    ```bash
    ./launch_lunar_fixed_size.sh
    ```
+   - Access at: http://localhost:14500
 
-2. **Access via web browser**:
-   - Open: http://localhost:14500
-   - Click "Connect" when prompted
-   - **Display will now fit properly in your browser!**
+2. **🟢 Chromebook Optimized** (Perfect for smaller screens):
+   ```bash
+   ./launch_lunar_chromebook.sh
+   ```
+   - Access at: http://localhost:14502
+   - **Smaller resolution optimized for Chromebook displays!**
 
 3. **Alternative launcher** (may have oversized display):
    ```bash
@@ -89,10 +95,13 @@ tail -20 /tmp/:100.log
 
 ### 📁 File Structure
 
-- `launch_lunar_fixed_size.sh` - **RECOMMENDED launcher** (proper display sizing)
-- `launch_lunar_xpra.sh` - Alternative launcher (may have oversized display)
-- `fix_display.sh` - Helper script to fix display issues
-- `xpra_info.sh` - Status and connection info
+### 🛠️ Available Scripts
+
+- `launch_lunar_fixed_size.sh` - **BEST FOR REGULAR SCREENS** - Launches with proper display scaling (Port 14500)
+- `launch_lunar_chromebook.sh` - **🟢 CHROMEBOOK OPTIMIZED** - Smaller resolution for Chromebooks (Port 14502)
+- `launch_lunar_xpra.sh` - Original launcher (may be oversized)
+- `xpra_info.sh` - Show XPRA server status and connection info
+- `fix_display.sh` - Troubleshooting script for display issues
 - `lunarclient.AppImage` - Original Lunar Client download
 - `squashfs-root/` - Extracted AppImage contents
 - `/tmp/:100.log` - XPRA server logs
